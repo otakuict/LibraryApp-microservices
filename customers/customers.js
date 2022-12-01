@@ -56,6 +56,20 @@ app.get("/customers", (req, res) => {
     );
 });
 
+app.get("/customer/:id", (req, res) => {
+  Customer.findById(req.params.id)
+    .then((customer) => {
+      res.json(customer);
+    })
+    .catch(
+      (error = {
+        if(error) {
+          throw error;
+        },
+      })
+    );
+});
+
 app.delete("/customer/:id", (req, res) => {
   Customer.findOneAndDelete(req.params.id)
     .then(() => {
